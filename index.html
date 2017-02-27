@@ -25,22 +25,14 @@
     <section>
       <h2>Provider Lookup</h2>
       <div class="">
-        <select class="" name="">
-          <option value="">Name</option>
-          <option value="">Email</option>
-          <option value="">Specialty</option>
-          <option value="">Practice</option>
-        </select>
-        <select class="" name="">
-          <option value="">A-Z</option>
-          <option value="">Z-A</option>
+        <select class="" name="" ng-options="option.title for option in sortOptions" ng-model="selected" ng-change="hasChanged()">
         </select>
       </div>
       <ul>
-        <li ng-repeat="x in providers">
+        <li ng-repeat="x in providers | orderBy:sortByField:sortReverse">
           <div class="">
             <span>{{x.last_name}}, {{x.first_name}}</span>
-            <span>{{x.email}}</span>
+            <span>{{x.email_address}}</span>
             <span>{{x.specialty}}</span>
             <span>{{x.practice_name}}</span>
           </div>

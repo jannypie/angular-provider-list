@@ -1,5 +1,8 @@
 var app = angular.module("providersApp", []);
+
 app.controller("providersController", function($scope) {
+
+  // seed data
   $scope.providers = [{
       "last_name": "Harris",
       "first_name": "Mike",
@@ -43,11 +46,40 @@ app.controller("providersController", function($scope) {
       "practice_name": "Juday Family Practice"
     }
   ]
+
+  // add provider
   $scope.addProvider = function() {
     $scope.providers.push($scope.newProvider);
   }
+
+  // remove provider
   $scope.removeProvider = function(x) {
     $scope.providers.splice(x, 1);
+  }
+
+  // default sort settings
+  $scope.sortByField = 'last_name';
+  $scope.sortReverse = false;
+
+  // select sort options
+  $scope.sortOptions = [{
+    field: "last_name",
+    title: "Name"
+  }, {
+    field: "email_address",
+    title: "Email"
+  }, {
+    field: "specialty",
+    title: "Specialty"
+  }, {
+    field: "practice_name",
+    title: "Practice"
+  }];
+
+  $scope.selected = $scope.sortOptions[0];
+
+  $scope.hasChanged = function() {
+    $scope.sortByField = $scope.selected.field;
   }
 
 });
