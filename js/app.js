@@ -49,7 +49,7 @@ app.controller("providersController", function($scope) {
 
   // add provider
   $scope.addProvider = function() {
-    $scope.providers.push($scope.newProvider);
+    $scope.providers.unshift($scope.newProvider);
   }
 
   // remove provider
