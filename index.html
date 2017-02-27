@@ -10,24 +10,38 @@
 
 <body ng-app="providersApp" ng-controller="providersController">
 
-  <main class="container">
+  <main class="container usa-grid">
     <h1>Provider Listing</h1>
-    <section class="addNewProvider">
+    <section class="addNewProvider usa-width-one-third">
       <h2>Add New Provider</h2>
-      <input ng-model="newProvider.first_name">
-      <input ng-model="newProvider.last_name">
-      <input ng-model="newProvider.email_address">
-      <input ng-model="newProvider.specialty">
-      <input ng-model="newProvider.practice_name">
-      <button ng-click="addProvider()">Add</button>
+      <form class="usa-form">
+        <label class="usa-input-required" for="first_name">First Name</label>
+        <input ng-model="newProvider.first_name" name="first_name" required aria-required="true">
+        <label class="usa-input-required" for="last_name">Last Name</label>
+        <input ng-model="newProvider.last_name" name="last_name" required aria-required="true">
+        <label class="usa-input-required" for="email_address">Email Address</label>
+        <input ng-model="newProvider.email_address" name="email_address" type="email" required aria-required="true">
+        <label for="specialty">Specialty</label>
+        <input ng-model="newProvider.specialty" name="specialty">
+        <label for="practice_name">Practice Name</label>
+        <input ng-model="newProvider.practice_name" name="practice_name">
+        <button ng-click="addProvider()">Add</button>
+      </form>
     </section>
 
-    <section>
+    <section class="showProviders usa-width-two-thirds">
       <h2>Provider Lookup</h2>
-      <div class="">
-        <select class="" name="" ng-options="option.title for option in sortOptions" ng-model="selected" ng-change="hasChanged()">
-        </select>
-        <button ng-click="sortReverse = !sortReverse">Reverse Order</button>
+      <div class="sort-options usa-grid">
+        <div class="usa-width-two-thirds">
+          <form class="usa-form">
+            <label class="usa-sr-only" for="sortOptions">Sort Options</label>
+            <select class="" name="sortOptions" ng-options="option.title for option in sortOptions" ng-model="selected" ng-change="hasChanged()">
+          </select>
+          </form>
+        </div>
+        <div class="usa-width-one-third">
+          <button ng-click="sortReverse = !sortReverse">Reverse Order</button>
+        </div>
       </div>
       <ul>
         <li ng-repeat="x in providers | orderBy:sortByField:sortReverse">
