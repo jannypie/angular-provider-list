@@ -1,0 +1,37 @@
+/* App-specific USWDS overrides */
+body {
+  background: #0071bc;
+}
+.container {
+  margin-top: 1em;
+}
+.addNewProvider,
+.showProviders {
+  background: white;
+  padding: 1em;
+}
+.page-heading {
+  color: white;
+}
+.providers-list-item {
+  margin: 1em;
+  padding: 0.5em 5em 0.5em 0.5em;
+  position: relative;
+}
+.providers-list-item:nth-child(odd) {
+  background: #e1f3f8;
+}
+.detail {
+  display: block;
+}
+.provider-details--remove {
+  position: absolute;
+  top: 0.25em;
+  right: 0.5em;
+}
+
+@media (min-width: 600px) {
+  .detail:nth-child(even) {
+    text-align: right;
+  }
+}

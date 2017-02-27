@@ -6,14 +6,15 @@
   <title>Providers</title>
   <script type="text/javascript" src="js/angular.min.js"></script>
   <link rel="stylesheet" href="css/uswds.css">
+  <link rel="stylesheet" href="css/app.css">
 </head>
 
 <body ng-app="providersApp" ng-controller="providersController">
 
   <main class="container usa-grid">
-    <h1>Provider Listing</h1>
+    <h1 class="page-heading">Provider Listing</h1>
     <section class="addNewProvider usa-width-one-third">
-      <h2>Add New Provider</h2>
+      <h2>Add Provider</h2>
       <form class="usa-form">
         <label class="usa-input-required" for="first_name">First Name</label>
         <input ng-model="newProvider.first_name" name="first_name" required aria-required="true">
@@ -43,15 +44,19 @@
           <button ng-click="sortReverse = !sortReverse">Reverse Order</button>
         </div>
       </div>
-      <ul>
-        <li ng-repeat="x in providers | orderBy:sortByField:sortReverse">
-          <div class="">
-            <span>{{x.last_name}}, {{x.first_name}}</span>
-            <span>{{x.email_address}}</span>
-            <span>{{x.specialty}}</span>
-            <span>{{x.practice_name}}</span>
+      <ul class="usa-unstyled-list">
+        <li ng-repeat="x in providers | orderBy:sortByField:sortReverse" class="providers-list-item">
+          <div class="provider-details">
+            <div class="usa-grid-full">
+              <span class="detail usa-width-one-half"><em>{{x.last_name}}, {{x.first_name}}</em></span>
+              <span class="detail usa-width-one-half">{{x.practice_name}}</span>
+            </div>
+            <div class="usa-grid-full">
+              <span class="detail usa-width-one-half">{{x.email_address}}</span>
+              <span class="detail usa-width-one-half">{{x.specialty}}</span>
+            </div>
           </div>
-          <span ng-click="removeProvider($index)">&times;</span></li>
+          <button ng-click="removeProvider($index)" class="provider-details--remove">&times;</button></li>
       </ul>
     </section>
   </main>
