@@ -13,5 +13,10 @@
 - - Be prepared to discuss the design choices you make.
 - All data exchanges should be in JSON format.
 
+## Comments
+
+- I would like to break out the views into partials, but it causes cross-domain issues when not run on a web server. This is why that code is contained in index.html.
+- If time allows, I will return to add search.
+
 ## Credits
 Styling and font definitions are [US Web Design Standards](https://standards.usa.gov/) which are compliant with accessibility standards and best practices. [GitHub Repo](https://github.com/18F/web-design-standards)
