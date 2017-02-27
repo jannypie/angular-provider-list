@@ -20,13 +20,14 @@
       <input ng-model="newProvider.specialty">
       <input ng-model="newProvider.practice_name">
       <button ng-click="addProvider()">Add</button>
-
     </section>
+
     <section>
       <h2>Provider Lookup</h2>
       <div class="">
         <select class="" name="" ng-options="option.title for option in sortOptions" ng-model="selected" ng-change="hasChanged()">
         </select>
+        <button ng-click="sortReverse = !sortReverse">Reverse Order</button>
       </div>
       <ul>
         <li ng-repeat="x in providers | orderBy:sortByField:sortReverse">
